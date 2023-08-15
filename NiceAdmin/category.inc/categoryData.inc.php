@@ -8,14 +8,25 @@
             $msg = '';
 			if($catename != '' && $catetype != ""  &&   $status != '' ){
 
-			    echo $cate_sql = " INSERT INTO `category_tbl`(`cate_name`,`cate_type`,`cate_status`)VALUES('$catename', '$catetype','$status') ";
+			     $cate_sql = " INSERT INTO `category_tbl`(`cate_name`,`cate_type`,`cate_status`)VALUES('$catename', '$catetype','$status') ";
 				$mysql = $conn->query($cate_sql) or die("Sql not executed");
               
 				if($mysql){
-                        
-					echo 1;
+                        $arry [] = array(
+							'message' => "data submited",
+						    'status' => 'success'
+						);
+					$response = json_encode($arry);
+					echo $response;
+
 					}else{
-					echo  0;
+
+						$arry [] = array(
+							'message' => "data not submited",
+						    'status' => 'faild'
+						);
+					$response = json_encode($arry);
+					echo $response;
 				}
 			}
 		}

@@ -18,6 +18,7 @@ include('../header/header.inc.php');?>
 </div><!-- End Page Title -->
 
 <section class="section">
+  <div id = "msg_alert"  class="alert alert-danger text-right" style = "display: none;"></div>
 <div class="card">
         <div class="card-header">Add Category </div>
 
@@ -65,6 +66,7 @@ include('../header/header.inc.php');?>
               </form><!-- End Horizontal Form -->
             </div>
             <div class="card-footer"></div>
+
 </div>
  
 

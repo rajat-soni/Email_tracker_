@@ -67,17 +67,31 @@ function cateTypeValidation() {
 
         $.ajax({
 
-        url :'../category.inc/categoryData.inc.php',
+         url :'../category.inc/categoryData.inc.php',
          type : 'POST',
          data : {cate_name: cate_name, cate_type:cate_type, cate_status:cate_status},
-         success : function(response){
-            if(response){
-                alert("success")
-            }else{
-                alert("false")
-            }
+         datatype : 'JSON',
+            success : function(response){
+                var response_Data = JSON.parse(response);
+                console.log(response_Data)
+              
+                if(response_Data[0].status == "success"){
+                   
+                    var error_show =  document.getElementById('msg_alert')
+                    error_show.style.display = 'block';
+                    error_show.innerHTML= "Processing...."
+                    
+                    setInterval(function(){
+                        window.location = '../category.inc/indexCategory.inc.php'
 
-        }
+                    }, 2000)
+                }else{
+                    error_show.style.display = 'block';
+                    error_show.innerHTML= "Date  not submitted.."
+                    
+                }
+
+            }
        });
        return true;
    }else{
